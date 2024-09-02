@@ -1,0 +1,6 @@
+llama-index==0.10.43
+llama-index-readers-file==0.1.23
+llama-index-embeddings-huggingface==0.2.1
+llama_cpp_python==0.2.77
+neo4j==5.23.0
+llama-index-graph-stores-neo4j==0.2.14

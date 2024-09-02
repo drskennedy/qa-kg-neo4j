@@ -1,0 +1,2 @@
+How do you enable HTTP/2 optimization on SteelHeads? Provide the specific commands.
+When enabling HTTP/2 optimization on SteelHead, on which SteelHead do you enable them?
