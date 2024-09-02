@@ -3,7 +3,7 @@
 **Step-by-step guide on Medium**: [Local LLM Generated Knowledge Graphs Powered by Local Neo4j](https://medium.com/ai-advances/local-llm-generated-knowledge-graphs-powered-by-local-neo4j-4111c5234993)
 ___
 ## Context
-Knowledge graphs are expected to improve adaptation of LLMs to niche domains, as they capture semantics or relationships underlying entities captured from internal documents unlike the approach used by the RAG method. To help with robustness and scalability, the knowledge graphs are stored in a Neo4j database.
+Knowledge graphs are expected to improve adaptation of LLMs to niche domains, as they capture semantics or relationships underlying entities from text documents unlike the approach used by the RAG method. To help with robustness and scalability, the knowledge graphs are stored in a Neo4j database.
 
 In this project, we develop a QA system using `LlamaIndex`'s module `PropertyGraphIndex` powered by a locally hosted LLM loaded using `llama-cpp-python` and backed by the graph-native Neo4j database. 
 <br><br>
@@ -14,12 +14,13 @@ ___
 ```
 % brew install --cask temurin@17
 ```
-- Extract the contents of the downloaded archive
+- Extract the contents of the downloaded neo4j community edition tarball:
 ```
 % tar -xf neo4j-community-5.21.0-unix.tar.gz
 ```
 - Place the extracted files in a permanent home on your machine. I chose /opt/.
-- The top level directory is referred to as NEO4J_HOME. Added an environment variable to my ~/.zshrc file:
+
+- The top level directory is referred to as `NEO4J_HOME`. Add an environment variable. E.g. added the following to my ~/.zshrc file:
 ```
 export NEO4J_HOME=/opt/neo4j-community-5.21.0
 ```
@@ -43,9 +44,14 @@ $ source kg_qa/bin/activate
 $ pip install -r requirements.txt
 ```
 - Download Mistral-7B-Instruct-v0.3.Q2_K.gguf from [MaziyarPanahi HF repo](https://huggingface.co/MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF) to directory `models`.
-- To start Neo4j app, run script `main_n4j.py` to start the testing:
+
+- To start the Neo4j app, run script `main_n4j.py`:
 ```
 $ python main_n4j.py
+```
+- Optionally, to start SimpleGraphStore app, run script `main_sgs.py`:
+```
+$ python main_sgs.py
 ```
 ___
 ## Quickstart
@@ -53,10 +59,6 @@ ___
 ```
 $ source kg_qa/bin/activate
 $ python main_n4j.py
-```
-- To start SimpleGraphStore app, run script `main_sgs.py`:
-```
-$ python main_sgs.py
 ```
 - Here is a sample run:
 ```
