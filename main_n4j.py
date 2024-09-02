@@ -1,3 +1,4 @@
+# main_n4j.py
 from llama_index.core import (
     PropertyGraphIndex,
     SimpleDirectoryReader,
@@ -45,13 +46,14 @@ graph_store = Neo4jPropertyGraphStore(
 )
 
 try:
+    # attempt to load index from file and graph from database
     gstorage_context = StorageContext.from_defaults(persist_dir='./storage_n4')
     kg_index = PropertyGraphIndex.from_existing(property_graph_store=graph_store)
 except FileNotFoundError as e:
-    #print(f'{e.__class__}\n{e}')
     gstorage_context = StorageContext.from_defaults(graph_store=graph_store)
     documents = SimpleDirectoryReader("./pdf/").load_data()
     start = timeit.default_timer()
+    # perform kg generation
     kg_index = PropertyGraphIndex.from_documents(
         documents,
         storage_context=gstorage_context,
@@ -61,7 +63,6 @@ except FileNotFoundError as e:
     )
     kg_gen_time = timeit.default_timer() - start # seconds
     gstorage_context.persist(persist_dir="./storage_n4")
-    #kg_index.storage_context.persist(persist_dir="./storage_n4")
     print(f'KG generation completed in: {datetime.timedelta(seconds=kg_gen_time)}')
 
 kg_keyword_query_engine = kg_index.as_query_engine(
@@ -70,6 +71,7 @@ kg_keyword_query_engine = kg_index.as_query_engine(
     similarity_top_k=2,
 )
 
+# read questions from file and ask one at a time
 with open('qa_list_doc1.txt') as qfile:
     for query in qfile:
         # KG query
