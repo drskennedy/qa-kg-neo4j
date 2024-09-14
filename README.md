@@ -1,6 +1,6 @@
 # Question-answering app using local LLM and Neo4j-power knowledge graphs from LlamaIndex
 
-**Step-by-step guide on Medium**: [Local LLM Generated Knowledge Graphs Powered by Local Neo4j](https://medium.com/ai-advances/local-llm-generated-knowledge-graphs-powered-by-local-neo4j-4111c5234993)
+**Step-by-step guide on Medium**: [Local LLM Generated Knowledge Graphs Powered by Local Neo4j](https://ai.gopubby.com/local-llm-generated-knowledge-graphs-powered-by-local-neo4j-4111c5234993?sk=9091faa56d4ce983d8120dffcafcfe48)
 ___
 ## Context
 Knowledge graphs are expected to improve adaptation of LLMs to niche domains, as they capture semantics or relationships underlying entities from text documents unlike the approach used by the RAG method. To help with robustness and scalability, the knowledge graphs are stored in a Neo4j database.
