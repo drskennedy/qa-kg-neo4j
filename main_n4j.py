@@ -22,10 +22,11 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 # load LLM and embeddings model
 llm = LlamaCPP(
     model_path='./models/mistral-7b-instruct-v0.3.Q2_K.gguf',
+    #model_path='./models/DeepSeek-R1-Distill-Qwen-7B-Q6_K.gguf',
     temperature=0.1,
-    max_new_tokens=256,
+    max_new_tokens=2000,
     context_window=4096,
-    model_kwargs={"n_gpu_layers": 1},
+    model_kwargs={"n_gpu_layers": -1},
     verbose=False
 )
 embed_model = HuggingFaceEmbedding()
